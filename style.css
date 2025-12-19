@@ -593,7 +593,16 @@ body::after {
     box-shadow: 0 15px 30px rgba(93, 64, 55, 0.4);
 }
 
-/* Modal Base Styles - Ensure hidden by default */
+    /* Ensure lightbox image has size and styles */
+    #lightbox-image {
+        max-width: 90%;
+        max-height: 80vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    /* Modal Base Styles - Ensure hidden by default */
 .video-modal,
 .lightbox-modal,
 .bookmark-modal {
