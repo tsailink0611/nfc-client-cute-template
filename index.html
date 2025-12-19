@@ -19,9 +19,12 @@
     
     <!-- Inline CSS to force override cache and styles -->
     <style>
-        /* ------------------------------
-           FORCED OVERRIDE STYLES
-           ------------------------------ */
+        /**
+         * ============================================
+         * FORCED OVERRIDE STYLES
+         * キャッシュを上書きするためのインラインCSS
+         * ============================================
+         */
         
         /* Instagram Section Centering */
         .insta-box-container {
@@ -113,7 +116,9 @@
     </style>
 </head>
 <body>
-    <!-- Wave Background -->
+    <!-- ============================================
+         Wave Background - 波型SVG背景
+         ============================================ -->
     <div class="wave-container">
         <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <defs>
@@ -133,9 +138,13 @@
         </svg>
     </div>
 
-    <!-- Main Container -->
+    <!-- ============================================
+         Main Container - メインコンテンツエリア
+         ============================================ -->
     <main class="container">
-        <!-- Header Section -->
+        <!-- ============================================
+             Hero Section - ヒーロー画像エリア
+             ============================================ -->
         <header class="hero">
             <div class="hero-image-container">
                 <img src="reina-hero-cute.jpg" alt="愛花" class="hero-image">
@@ -152,7 +161,9 @@
             </div>
         </header>
 
-        <!-- Avatar Introduction Section (Moved Here) -->
+        <!-- ============================================
+             Avatar Section - アバターボタンエリア
+             ============================================ -->
         <section class="avatar-section">
             <div class="avatar-intro-text">
                 <h2 class="section-title-small">💕 Special Contents</h2>
@@ -163,7 +174,9 @@
             </button>
         </section>
 
-        <!-- Services Section (Simplified) -->
+        <!-- ============================================
+             Services Section - サービスメニューカード
+             ============================================ -->
         <section class="services">
             <h2 class="section-title-elegant">
                 ✨ Menu ✨
@@ -182,7 +195,9 @@
             </div>
         </section>
 
-        <!-- Photo Gallery Slideshow Section -->
+        <!-- ============================================
+             Photo Gallery - ギャラリースライドショー
+             ============================================ -->
         <section class="gallery-section">
             <h2 class="section-title-elegant">
                 ✨ Gallery ✨
@@ -213,7 +228,9 @@
             </div>
         </section>
 
-        <!-- Instagram Section (Final Fix) -->
+        <!-- ============================================
+             Instagram Section - Instagram連携エリア
+             ============================================ -->
         <section class="insta-box-container" style="text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
             <h2 class="insta-box-title" style="text-align: center !important; width: 100% !important;">📸 Instagram</h2>
             <p class="insta-box-subtitle" style="text-align: center !important; width: 100% !important;">オフショット載せてるよ〜💕</p>
@@ -231,7 +248,9 @@
             </a>
         </section>
 
-        <!-- Blog Section (Notion) -->
+        <!-- ============================================
+             Blog Section - ブログ（Notion連携）
+             ============================================ -->
         <section class="blog-section">
             <h2 class="section-title-elegant">
                 ✨ Diary
@@ -255,7 +274,9 @@
             </div>
         </section>
 
-        <!-- Quick Info -->
+        <!-- ============================================
+             Quick Info - 簡易情報カード
+             ============================================ -->
         <section class="quick-info">
             <div class="info-cards-cute">
                 <div class="info-cute-card">
@@ -273,7 +294,9 @@
             </div>
         </section>
 
-        <!-- CTA Buttons -->
+        <!-- ============================================
+             CTA Buttons - 行動を促すボタン
+             ============================================ -->
         <section class="cta-section centered-section">
             <button id="bookmark-btn" class="btn btn-primary">
                 <span class="btn-icon">📱</span>
@@ -285,7 +308,9 @@
             </a>
         </section>
 
-        <!-- Footer -->
+        <!-- ============================================
+             Footer - フッターエリア
+             ============================================ -->
         <footer class="footer decorative-footer">
             <div class="footer-wave">
                 <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -304,7 +329,10 @@
         </footer>
     </main>
 
-    <!-- Video Modal -->
+    <!-- ============================================
+         Modals - モーダルウィンドウ群
+         ============================================ -->
+    <!-- Avatar Video Modal -->
     <div id="video-modal" class="video-modal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
@@ -321,7 +349,7 @@
         </div>
     </div>
 
-    <!-- Image Lightbox Modal -->
+    <!-- Image Lightbox Modal - 画像拡大表示 -->
     <div id="lightbox-modal" class="lightbox-modal">
         <div class="modal-overlay"></div>
         <div class="lightbox-content">
@@ -334,7 +362,7 @@
         </div>
     </div>
 
-    <!-- Bookmark Guide Modal -->
+    <!-- Bookmark Guide Modal - ブックマーク案内 -->
     <div id="bookmark-modal" class="bookmark-modal">
         <div class="modal-overlay"></div>
         <div class="bookmark-modal-content">

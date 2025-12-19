@@ -1,22 +1,33 @@
+/**
+ * ============================================
+ * Cute & Soft Theme - NFC Landing Page CSS
+ * テーマ: キュート＆ソフト（ピンク基調）
+ * 特徴: 丸みのある形状、優しいグラデーション、20代向け
+ * ============================================
+ */
+
+/* カラー変数定義 */
 :root {
-    /* Cute & Soft Theme Colors */
-    --color-primary: #FF9EAA;       /* Soft Pink */
-    --color-primary-light: #FFD1D9; /* Pale Pink */
-    --color-secondary: #FFF0F5;     /* Lavender Blush */
-    --color-accent: #FFD700;        /* Gold (keep for subtle accent) */
-    --color-text: #5D4037;          /* Soft Brown (instead of harsh black) */
-    --color-text-light: #8D6E63;    /* Lighter Brown */
+    /* メインカラー - ソフトピンク系 */
+    --color-primary: #FF9EAA;       /* ソフトピンク */
+    --color-primary-light: #FFD1D9; /* 薄いピンク */
+    --color-secondary: #FFF0F5;     /* ラベンダーブラッシュ */
+    --color-accent: #FFD700;        /* ゴールドアクセント（控えめに使用） */
+    
+    /* テキストカラー - ブラウン系（黒よりも優しい） */
+    --color-text: #5D4037;          /* ソフトブラウン */
+    --color-text-light: #8D6E63;    /* ライトブラウン */
     --color-white: #FFFFFF;
     
-    /* Background Gradient */
+    /* 背景グラデーション */
     --bg-gradient: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%);
     
-    /* Shapes */
-    --border-radius-lg: 30px;       /* Much rounder */
+    /* 形状 - 大きめの角丸で可愛らしさを演出 */
+    --border-radius-lg: 30px;
     --border-radius-md: 20px;
     --border-radius-sm: 12px;
     
-    /* Effects */
+    /* エフェクト */
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: 1px solid rgba(255, 255, 255, 0.8);
     --shadow-soft: 0 10px 30px rgba(255, 158, 170, 0.2);
@@ -40,7 +51,10 @@ body {
     position: relative;
 }
 
-/* Floating Bubbles Background (Simulated) */
+/**
+ * 背景装飾
+ * 浮遊するバブル風のぼかし効果（疑似要素で実装）
+ */
 body::before {
     content: '';
     position: fixed;
@@ -81,7 +95,12 @@ body::after {
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
 }
 
-/* Hero Section - Refined for Web Look */
+/**
+ * ============================================
+ * ヒーローセクション
+ * 画面上部の大きな画像エリア（画面高の75%）
+ * ============================================
+ */
 .hero {
     position: relative;
     width: 100%;
@@ -157,7 +176,12 @@ body::after {
     margin-top: 10px;
 }
 
-/* Avatar Section - New Design */
+/**
+ * ============================================
+ * アバターセクション
+ * 「アイカのアバター」ボタンエリア
+ * ============================================
+ */
 .avatar-section {
     text-align: center;
     padding: 30px 20px;
@@ -180,7 +204,10 @@ body::after {
     margin-bottom: 20px;
 }
 
-/* Avatar Button - Rich & Cute Design */
+/**
+ * アバターボタン
+ * リッチなグラデーションと立体感のある可愛いボタン
+ */
 .btn-pink-avatar {
     background: linear-gradient(135deg, #FF9EAA 0%, #FF708D 50%, #FF5A7E 100%);
     color: white;
@@ -228,6 +255,10 @@ body::after {
 }
 
 /* Re-adding Modal Content Style (was accidentally removed) */
+/**
+ * モーダルコンテンツ
+ * アバター画像表示用のモーダル
+ */
 .modal-content {
     background: #FFF;
     border-radius: 30px;
@@ -238,8 +269,15 @@ body::after {
     z-index: 10;
     width: 90%;
     max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
-    max-height: 60vh; /* Reduced height to ensure button is visible if needed */
+
+.modal-video {
+    max-height: 60vh;
     width: auto !important;
     max-width: 100%;
     object-fit: contain;
@@ -248,18 +286,12 @@ body::after {
     border-radius: 12px;
 }
 
-/* Ensure modal content is centered */
-.modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Card Sections - Blog Style */
+/**
+ * ============================================
+ * カードセクション（ブログ風スタイル）
+ * ホバー時に浮き上がるアニメーション付き
+ * ============================================
+ */
 .info-card {
     background: #FFF;
     border: none;
@@ -297,7 +329,10 @@ body::after {
     border-radius: 3px;
 }
 
-/* Services - Card Grid with Hover */
+/**
+ * サービスカード
+ * グリッドレイアウトでカードを並べる
+ */
 .service-cards-cute {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -346,7 +381,10 @@ body::after {
     line-height: 1.5;
 }
 
-/* Quick Info - Centered Blog Cards */
+/**
+ * クイックインフォカード
+ * 箇条書き風の情報表示（アイコン付き）
+ */
 .info-cards-cute {
     display: flex;
     flex-direction: column;
@@ -391,7 +429,12 @@ body::after {
     color: var(--color-text);
 }
 
-/* CTA Buttons - Proper Styling */
+/**
+ * ============================================
+ * CTAボタンセクション
+ * 「保存してね」「LINEで話そ！」ボタン
+ * ============================================
+ */
 .cta-section.centered-section {
     display: flex;
     flex-direction: column;
@@ -441,7 +484,12 @@ body::after {
     vertical-align: middle;
 }
 
-/* Decorative Footer */
+/**
+ * ============================================
+ * フッター（装飾版）
+ * 波型SVGとアイコン装飾付き
+ * ============================================
+ */
 .footer.decorative-footer {
     position: relative;
     background: var(--color-primary); /* Pink background */
@@ -528,7 +576,12 @@ body::after {
     background: linear-gradient(90deg, var(--color-primary-light), var(--color-primary), var(--color-primary-light));
 }
 
-/* Gallery - Adjusted for Cards Effect */
+/**
+ * ============================================
+ * ギャラリーセクション
+ * Swiperでカルーセル表示（Coverflow Effect）
+ * ============================================
+ */
 .gallery-section {
     padding: 20px 0;
     overflow: hidden;
@@ -593,8 +646,12 @@ body::after {
     box-shadow: 0 15px 30px rgba(93, 64, 55, 0.4);
 }
 
-    /* Ensure lightbox image has size and styles */
-    .lightbox-image, #lightbox-image {
+/**
+ * ============================================
+ * ライトボックス（画像拡大表示）
+ * ============================================
+ */
+.lightbox-image, #lightbox-image {
         display: block;
         max-width: 90%;
         max-height: 80vh;
@@ -603,8 +660,13 @@ body::after {
         box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
-    /* Bookmark Guide Modal Specific */
-    .bookmark-modal {
+/**
+ * ============================================
+ * ブックマークガイドモーダル
+ * iPhone/Android向けの保存方法案内
+ * ============================================
+ */
+.bookmark-modal {
         display: none;
         position: fixed;
         top: 0;
@@ -644,7 +706,10 @@ body::after {
         100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Modal Base Styles - Ensure hidden by default */
+/**
+ * モーダル基本スタイル
+ * デフォルトは非表示、.activeクラスで表示
+ */
 .video-modal,
 .lightbox-modal,
 .bookmark-modal {
@@ -687,7 +752,11 @@ body::after {
     border-radius: 20px;
 }
 
-/* Animations */
+/**
+ * ============================================
+ * アニメーション定義
+ * ============================================
+ */
 @keyframes float {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }

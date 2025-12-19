@@ -1,9 +1,19 @@
 /**
+ * ============================================
  * NFC Landing Page - JavaScript (Cute Version)
- * vCard generation and download functionality
+ * 
+ * 機能:
+ * - vCard生成とダウンロード
+ * - モーダル表示（アバター、ライトボックス、ブックマーク案内）
+ * - スムーススクロール
+ * - フィードバックメッセージ表示
+ * ============================================
  */
 
-// Contact Information
+/**
+ * 連絡先情報
+ * この情報を元にvCardファイルを生成します
+ */
 const contactInfo = {
     firstName: '愛花',
     lastName: '山本',
@@ -81,7 +91,10 @@ function handleVCardDownload() {
 }
 
 /**
- * Bookmark Guide Modal Functions
+ * ============================================
+ * ブックマークガイドモーダル機能
+ * iPhone/Android向けの保存方法を表示
+ * ============================================
  */
 function openBookmarkGuide() {
     const modal = document.getElementById('bookmark-modal');
@@ -143,7 +156,10 @@ function initSmoothScroll() {
 }
 
 /**
- * Video Modal Functions
+ * ============================================
+ * アバターモーダル機能
+ * 「アイカのアバター」ボタンで画像を表示
+ * ============================================
  */
 function openVideoModal() {
     const modal = document.getElementById('video-modal');
@@ -165,7 +181,10 @@ function closeVideoModal() {
 }
 
 /**
- * Initialize application
+ * ============================================
+ * アプリケーション初期化
+ * DOMContentLoaded時に実行される
+ * ============================================
  */
 function init() {
     // Add vCard download handler (legacy support if button id exists)

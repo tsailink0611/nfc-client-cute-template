@@ -1,9 +1,17 @@
 /**
+ * ============================================
  * Gallery Swiper Initialization
- * カードスタック風エフェクト（Cards Effect）
- * 常に回転するのではなく、カードが重なって見えるおしゃれな表示
+ * 
+ * エフェクト: Coverflow（カード風の重なり表示）
+ * 動作: 自動再生 + タッチ/スワイプ操作
+ * 機能: クリックで画像をライトボックス表示
+ * ============================================
  */
 
+/**
+ * スライド画像の定義
+ * ファイル名と代替テキストを管理
+ */
 const slideImages = [
     { src: 'slide-1.jpg', alt: '愛花 - ピンクドレス' },
     { src: 'slide-2.jpg', alt: '愛花 - 浴衣姿' },
@@ -12,7 +20,10 @@ const slideImages = [
     { src: 'slide-5.jpg', alt: '愛花 - クローズアップ' }
 ];
 
-// Swiper初期化
+/**
+ * Swiper初期化
+ * Coverflowエフェクトで立体的なカルーセルを実装
+ */
 const gallerySwiper = new Swiper('.gallery-swiper', {
     // カードエフェクト
     effect: 'coverflow',
@@ -60,7 +71,17 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
     },
 });
 
-// 画像クリックでLightbox表示 - クリック判定の改善
+/**
+ * ============================================
+ * ライトボックス機能
+ * 画像クリック時に拡大表示
+ * ============================================
+ */
+
+/**
+ * ギャラリーライトボックスの初期化
+ * スライドクリック時にライトボックスを開く
+ */
 function initGalleryLightbox() {
     const slides = document.querySelectorAll('.gallery-swiper .swiper-slide');
     
@@ -94,7 +115,8 @@ function initGalleryLightbox() {
 }
 
 /**
- * Lightbox Functions
+ * ライトボックスを開く
+ * @param {number} index - 表示する画像のインデックス
  */
 function openLightbox(index) {
     const lightbox = document.getElementById('lightbox-modal');
@@ -116,6 +138,9 @@ function openLightbox(index) {
     }
 }
 
+/**
+ * ライトボックスを閉じる
+ */
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox-modal');
     if (lightbox) {
@@ -129,6 +154,9 @@ function closeLightbox() {
     }
 }
 
+/**
+ * ライトボックスで次の画像を表示
+ */
 function lightboxNext() {
     const lightboxImage = document.getElementById('lightbox-image');
     // 現在の画像のファイル名からインデックスを探す（簡易実装）
@@ -142,6 +170,9 @@ function lightboxNext() {
     }
 }
 
+/**
+ * ライトボックスで前の画像を表示
+ */
 function lightboxPrev() {
     const lightboxImage = document.getElementById('lightbox-image');
     const currentSrc = lightboxImage.src.split('/').pop();
@@ -154,7 +185,10 @@ function lightboxPrev() {
     }
 }
 
-// Lightbox controls
+/**
+ * イベントリスナー設定
+ * DOM読み込み後にライトボックスの操作を初期化
+ */
 document.addEventListener('DOMContentLoaded', () => {
     initGalleryLightbox();
     
