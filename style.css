@@ -594,7 +594,8 @@ body::after {
 }
 
     /* Ensure lightbox image has size and styles */
-    #lightbox-image {
+    .lightbox-image, #lightbox-image {
+        display: block;
         max-width: 90%;
         max-height: 80vh;
         object-fit: contain;
