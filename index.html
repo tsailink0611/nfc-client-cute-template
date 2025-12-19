@@ -39,39 +39,30 @@
     <!-- Main Container -->
     <main class="container">
         <!-- Header Section -->
-        <header class="header">
-            <div class="club-badge">✨ Club Venus ✨</div>
-            <!-- Hero Image -->
+        <header class="hero">
             <div class="hero-image-container">
                 <img src="reina-hero-cute.jpg" alt="愛花" class="hero-image">
-            </div>
-            <h1 class="name-elegant">
-                愛花
-                <span class="name-english">Aika</span>
-            </h1>
-            <div class="subtitle-elegant">六本木で一番楽しい時間を♪</div>
-            <div class="tagline-elegant">
-                <span class="location-icon">📍</span> 六本木 Club Venus
-                <span class="separator-dot">•</span>
-                一緒に乾杯しましょう💕
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <div class="club-badge">✨ Club Venus ✨</div>
+                        <h1 class="name-elegant">
+                            愛花
+                            <span class="name-english">Aika</span>
+                        </h1>
+                        <p class="tagline-elegant">六本木で一番楽しい時間を♪</p>
+                    </div>
+                </div>
             </div>
         </header>
 
-        <!-- Avatar Introduction Button Section -->
-        <section class="video-trigger-section">
-            <div class="video-intro">
-                <div class="intro-accent">💕</div>
-                <h2 class="video-title-elegant">
-                    愛花からのご挨拶
-                </h2>
-                <p class="video-description-elegant">
-                    見に来てくれてありがとう！<br>
-                    アバターで自己紹介しちゃいます♪
-                </p>
+        <!-- Avatar Introduction Section (Moved Here) -->
+        <section class="avatar-section">
+            <div class="avatar-intro-text">
+                <h2 class="section-title-small">💕 Special Contents</h2>
+                <p>私のアバターからご挨拶します♪</p>
             </div>
-            <button id="avatar-trigger-btn" class="video-trigger-btn-elegant">
-                <span class="play-icon-elegant">🎬</span>
-                <span class="btn-text-elegant">アバター動画を見る</span>
+            <button id="avatar-trigger-btn" class="btn-pink-avatar">
+                アイカのアバター
             </button>
         </section>
 
@@ -190,7 +181,7 @@
         </section>
 
         <!-- CTA Buttons -->
-        <section class="cta-section">
+        <section class="cta-section centered-section">
             <button id="bookmark-btn" class="btn btn-primary">
                 <span class="btn-icon">📱</span>
                 保存してね💕
@@ -202,12 +193,20 @@
         </section>
 
         <!-- Footer -->
-        <footer class="footer">
-            <div class="code-line">
-                <span class="code-comment">// Contact: <a href="mailto:aika@club-venus.example" class="email-link">aika@club-venus.example</a></span>
+        <footer class="footer decorative-footer">
+            <div class="footer-wave">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#ffffff" fill-opacity="0.3" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
             </div>
-            <div class="footer-text">
-                &copy; 2025 Aika - Club Venus. Built with AI.
+            <div class="footer-content">
+                <div class="footer-icon">🎀</div>
+                <div class="code-line">
+                    <span class="code-comment">// Contact: <a href="mailto:aika@club-venus.example" class="email-link">aika@club-venus.example</a></span>
+                </div>
+                <div class="footer-text">
+                    &copy; 2025 Aika - Club Venus. Built with AI.
+                </div>
             </div>
         </footer>
     </main>

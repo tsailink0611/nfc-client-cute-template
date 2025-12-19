@@ -26,10 +26,11 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
         slideShadows: false, // 影を消してフラットに
     },
     
-    // 自動再生
+    // 自動再生 - インタラクション後も継続
     autoplay: {
         delay: 2500,
-        disableOnInteraction: false,
+        disableOnInteraction: false, // 触っても自動再生を止めない
+        pauseOnMouseEnter: false, // カーソルが乗っても止めない
     },
     
     // ループ
@@ -42,22 +43,44 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
         dynamicBullets: true,
     },
     
-    // レスポンシブ調整（必要に応じて）
+    // レスポンシブ調整
     centeredSlides: true,
     slidesPerView: 'auto',
+    
+    // タッチ操作の感度調整
+    threshold: 5, // 5px以上の移動でスワイプと判定
 });
 
-// 画像クリックでLightbox表示
+// 画像クリックでLightbox表示 - クリック判定の改善
 function initGalleryLightbox() {
     const slides = document.querySelectorAll('.gallery-swiper .swiper-slide');
     
-    slides.forEach((slide, index) => {
-        slide.addEventListener('click', () => {
-            // loopモードの場合、複製されたスライドがあるため、
-            // data-swiper-slide-indexを使って正しいインデックスを取得するか
-            // 単純にalt属性などで一致させる
-            openLightbox(index % slideImages.length);
+    slides.forEach((slide) => {
+        // clickイベントは、スワイプ終了時にも発火する場合があるため、
+        // Swiperの内部ステートや移動量を確認するのがベストだが、
+        // ここではシンプルに実装しつつ、Swiper自体のclickハンドラを利用する
+        slide.addEventListener('click', (e) => {
+            // スワイプ中でなければ実行
+            if (!gallerySwiper.animating) {
+                const img = slide.querySelector('img');
+                if (img) {
+                    // srcからインデックスを逆引き
+                    const currentSrc = img.src.split('/').pop();
+                    const index = slideImages.findIndex(image => image.src === currentSrc);
+                    if (index !== -1) {
+                        openLightbox(index);
+                    }
+                }
+            }
         });
+    });
+    
+    // SwiperのtouchStart/Endイベントで自動再生の挙動を補強
+    gallerySwiper.on('touchEnd', () => {
+        // タッチ終了後に自動再生を再開（念のため）
+        if (gallerySwiper.autoplay && !gallerySwiper.autoplay.running) {
+            gallerySwiper.autoplay.start();
+        }
     });
 }
 
