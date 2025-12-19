@@ -1,0 +1,15 @@
+{
+  "name": "nfc-client-takahashi-misaki",
+  "version": "1.0.0",
+  "description": "銀座Club Diamondのホステス、高橋美咲様のNFC名刺用ランディングページ",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vercel": "^50.1.3"
+  }
+}
