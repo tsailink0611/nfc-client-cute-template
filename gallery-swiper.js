@@ -15,16 +15,20 @@ const slideImages = [
 // Swiper初期化
 const gallerySwiper = new Swiper('.gallery-swiper', {
     // カードエフェクト
-    effect: 'cards',
+    effect: 'coverflow',
     grabCursor: true,
     
-    // カードエフェクトのオプション
-    cardsEffect: {
-        perSlideOffset: 8, // カードのずらし幅
-        perSlideRotate: 2, // 回転角度
-        rotate: true,
-        slideShadows: false, // 影を消してフラットに
+    // Coverflowエフェクトのオプション（Cards風に調整）
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 80, // カードの重なり具合
+        depth: 200,
+        modifier: 1,
+        slideShadows: false,
     },
+    
+    // スライドのタッチ移動を許可
+    allowTouchMove: true,
     
     // 自動再生 - インタラクション後も継続
     autoplay: {
@@ -49,6 +53,11 @@ const gallerySwiper = new Swiper('.gallery-swiper', {
     
     // タッチ操作の感度調整
     threshold: 5, // 5px以上の移動でスワイプと判定
+    
+    // キーボード操作
+    keyboard: {
+        enabled: true,
+    },
 });
 
 // 画像クリックでLightbox表示 - クリック判定の改善

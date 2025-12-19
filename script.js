@@ -180,10 +180,12 @@ function init() {
         saveContactBtn.addEventListener('click', handleVCardDownload);
     }
 
-    // Add bookmark guide handler
     const bookmarkBtn = document.getElementById('bookmark-btn');
     if (bookmarkBtn) {
-        bookmarkBtn.addEventListener('click', openBookmarkGuide);
+        // Remove existing listeners to prevent duplication if init is called multiple times
+        const newBtn = bookmarkBtn.cloneNode(true);
+        bookmarkBtn.parentNode.replaceChild(newBtn, bookmarkBtn);
+        newBtn.addEventListener('click', openBookmarkGuide);
     }
 
     // Add avatar modal handlers
