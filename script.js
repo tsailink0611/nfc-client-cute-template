@@ -1,31 +1,21 @@
 /**
- * ============================================
- * NFC Landing Page - JavaScript (Cute Version)
- * 
- * 機能:
- * - vCard生成とダウンロード
- * - モーダル表示（アバター、ライトボックス、ブックマーク案内）
- * - スムーススクロール
- * - フィードバックメッセージ表示
- * ============================================
+ * NFC Landing Page - JavaScript
+ * vCard generation and download functionality
  */
 
-/**
- * 連絡先情報
- * この情報を元にvCardファイルを生成します
- */
+// Contact Information
 const contactInfo = {
-    firstName: '愛花',
-    lastName: '山本',
-    firstNameEN: 'Aika',
-    lastNameEN: 'Yamamoto',
-    title: 'Cast at Club Venus',
-    company: 'Club Venus',
-    email: 'aika@club-venus.example',
+    firstName: '崇',
+    lastName: '佐々木',
+    firstNameEN: 'Takashi',
+    lastNameEN: 'Sasaki',
+    title: 'AI-Driven Development Consultant',
+    company: 'Freelance',
+    email: 'tsailink0611@gmail.com',
     phone: '', // Hidden per requirements
-    url: 'https://line.me/ti/p/demo-aika',
-    location: '六本木',
-    note: '六本木Club Venusの愛花です💕 楽しい時間を一緒に過ごしましょう！LINEお待ちしてます✨'
+    url: 'https://line.me/ti/p/NWGjZAM_AY',
+    location: '仙台',
+    note: '東北の中小企業向けAI導入コンサルタント。AIワークフロー構築、業務自動化、AI駆動開発サポートを提供。Tech Stack: N8N | Dify | Claude Code | Cursor'
 };
 
 /**
@@ -56,7 +46,7 @@ function generateVCard() {
  * @param {string} vcardData - vCard formatted string
  * @param {string} filename - Name of the file to download
  */
-function downloadVCard(vcardData, filename = 'aika-club-venus.vcf') {
+function downloadVCard(vcardData, filename = 'takashi-sasaki.vcf') {
     // Create a Blob from the vCard data
     const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8' });
 
@@ -83,18 +73,15 @@ function handleVCardDownload() {
         downloadVCard(vcardData);
 
         // Show success feedback
-        showFeedback('連絡先を保存したよ💕', 'success');
+        showFeedback('連絡先を保存しました！', 'success');
     } catch (error) {
         console.error('Error generating vCard:', error);
-        showFeedback('エラーが発生しちゃった💦 もう一度試してね。', 'error');
+        showFeedback('エラーが発生しました。もう一度お試しください。', 'error');
     }
 }
 
 /**
- * ============================================
- * ブックマークガイドモーダル機能
- * iPhone/Android向けの保存方法を表示
- * ============================================
+ * Bookmark Guide Modal Functions
  */
 function openBookmarkGuide() {
     const modal = document.getElementById('bookmark-modal');
@@ -156,59 +143,80 @@ function initSmoothScroll() {
 }
 
 /**
- * ============================================
- * アバターモーダル機能
- * 「アイカのアバター」ボタンで画像を表示
- * ============================================
+ * Add animation on scroll (for future enhancements)
+ */
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+/**
+ * Video Modal Functions
  */
 function openVideoModal() {
     const modal = document.getElementById('video-modal');
-    
-    if (modal) {
+    const video = document.getElementById('modal-video');
+
+    if (modal && video) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scroll
-        console.log('Showing Avatar Video Modal');
+
+        // Play video after modal animation
+        setTimeout(() => {
+            video.play().catch(err => {
+                console.log('Autoplay prevented:', err);
+            });
+        }, 400);
     }
 }
 
 function closeVideoModal() {
     const modal = document.getElementById('video-modal');
+    const video = document.getElementById('modal-video');
 
-    if (modal) {
+    if (modal && video) {
         modal.classList.remove('active');
         document.body.style.overflow = ''; // Restore scroll
+
+        // Pause and reset video
+        video.pause();
+        video.currentTime = 0;
     }
 }
 
 /**
- * ============================================
- * アプリケーション初期化
- * DOMContentLoaded時に実行される
- * ============================================
+ * Initialize application
  */
 function init() {
-    // Add vCard download handler (legacy support if button id exists)
+    // Add vCard download handler (legacy support)
     const vcardBtn = document.getElementById('vcard-btn');
     if (vcardBtn) {
         vcardBtn.addEventListener('click', handleVCardDownload);
     }
-    
-    // Also bind to the new "Save Contact" button
-    const saveContactBtn = document.getElementById('save-contact-btn');
-    if (saveContactBtn) {
-        saveContactBtn.addEventListener('click', handleVCardDownload);
-    }
 
+    // Add bookmark guide handler
     const bookmarkBtn = document.getElementById('bookmark-btn');
     if (bookmarkBtn) {
-        // Remove existing listeners to prevent duplication if init is called multiple times
-        const newBtn = bookmarkBtn.cloneNode(true);
-        bookmarkBtn.parentNode.replaceChild(newBtn, bookmarkBtn);
-        newBtn.addEventListener('click', openBookmarkGuide);
+        bookmarkBtn.addEventListener('click', openBookmarkGuide);
     }
 
-    // Add avatar modal handlers
-    const videoTriggerBtn = document.getElementById('avatar-trigger-btn');
+    // Add video modal handlers
+    const videoTriggerBtn = document.getElementById('video-trigger-btn');
     const videoModalCloseBtn = document.querySelector('.modal-close');
     const videoModalOverlay = document.querySelector('#video-modal .modal-overlay');
     const videoModal = document.getElementById('video-modal');
@@ -258,7 +266,10 @@ function init() {
     // Initialize smooth scroll
     initSmoothScroll();
 
-    console.log('// NFC Landing Page initialized (Cute Theme) 💕');
+    // Initialize scroll animations (optional)
+    // initScrollAnimations();
+
+    console.log('// NFC Landing Page initialized');
 }
 
 // Run initialization when DOM is ready
@@ -276,13 +287,13 @@ style.textContent = `
         top: 20px;
         right: 20px;
         padding: 1rem 1.5rem;
-        border-radius: 20px; /* Rounder */
-        font-family: 'M PLUS Rounded 1c', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 700;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+        font-family: var(--font-sans, sans-serif);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transform: translateX(400px);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.3s ease;
         z-index: 1000;
     }
 
@@ -291,12 +302,12 @@ style.textContent = `
     }
 
     .feedback-success {
-        background: #FF9EAA; /* Pink */
+        background: #000;
         color: #fff;
     }
 
     .feedback-error {
-        background: #FFB74D; /* Orange */
+        background: #dc2626;
         color: #fff;
     }
 
@@ -305,7 +316,6 @@ style.textContent = `
             left: 20px;
             right: 20px;
             transform: translateY(-100px);
-            text-align: center;
         }
 
         .feedback-message.show {
