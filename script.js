@@ -415,21 +415,6 @@ function closeVideoModal() {
  */
 function init() {
     // ============================================
-    // ヒーロー動画のフェードイン初期化
-    // ============================================
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        // 動画読み込み完了時にフェードイン
-        heroVideo.addEventListener('loadeddata', () => {
-            heroVideo.classList.add('loaded');
-        });
-        // 既に読み込み済みの場合
-        if (heroVideo.readyState >= 3) {
-            heroVideo.classList.add('loaded');
-        }
-    }
-    
-    // ============================================
     // オープニングアニメーション初期化
     // ============================================
     OpeningAnimation.init();
